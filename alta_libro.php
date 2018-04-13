@@ -5,15 +5,19 @@
 <title> Registro de usuarios </title> 
 </head>
 <body>
+
 <?php
+//se inicia sesion para evitar infiltraciones
 session_start();
 $_SESSION['alta']=3;
 if ($_SESSION['pag']==0){
 	header("Location: inicio.php");
 }
 $_SESSION['pag']=0;
+//Incluye archivo de conexion bd
 include 'conexion.php';
 $conn = conectar();
+//Llama a la query y hace la insersion en autores
 $query = ("SELECT id_autor,nombre,apaterno FROM autores");
 $process = pg_query($conn, $query);
 ?>
@@ -30,6 +34,7 @@ $process = pg_query($conn, $query);
 	<label  for="autor">Autor: </label>
 	<select name="autor"> 
 <?php
+//se hace un while para seleccionar el autor
 	while ($row = pg_fetch_row($process)) {
 			  echo '<option value="'.$row[0].'">'.$row[1].' '.$row[2].'</option>';
 			  	}

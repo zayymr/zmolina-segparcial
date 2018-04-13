@@ -6,6 +6,7 @@
 </head>
 <body>
 <?php
+//se inicia sesion para evitar infiltaciones
 session_start();
 if ($_SESSION['pag']==0){
 	header("Location: inicio.php");
@@ -37,7 +38,8 @@ $_SESSION['alta']=2;
     <div>
 	<input type="submit" value="Enviar" />
     </div>
-<a href="creditos.php">CREDITOS DE REALIZACIÓN</a>
+<br><br>
+<a href="creditos.php">CRÉDITOS DE REALIZACIÓN</a>
 </form>
 </body>
 </html>

@@ -8,7 +8,7 @@
 include 'conexion.php';
 $conn = conectar();
 
-//Se declara una variable para evitar errores en los formularios
+//variable para deteccion de errores
 $error = 0;
 session_start();
 if ($_SESSION['pag']==0){
@@ -53,7 +53,7 @@ if ($_SESSION['alta']==1){
 	if (!$password) {
 		$error = 1;
 	}	
-//Si no hay errores
+//Si no hay errore hace una insercions
 if ($error == 0) {
 $query = ("INSERT INTO usuarios (nombre,apaterno,amaterno,user_name,password) VALUES ('$nombre','$apaterno','$amaterno','$user_name','$password')");
 $process = pg_query($conn, $query);
@@ -105,14 +105,14 @@ else if ($_SESSION['alta']==2){
 		}
 	}
 	if ($nacionalidad) {
-		if (!preg_match('/^()[A-ZÁÉÍÓÚÜÑa-záéíóúüñ][a-záéíóúüñ]+(\s[A-ZÁÉÍÓÚÜÑ]?[a-záéíóúüñ]+)*$/',$apaterno)) {
+		if (!preg_match('/^()[A-ZÁÉÍÓÚÜÑa-záéíóúüñ][a-záéíóúüñ]+(\s[A-ZÁÉÍÓÚÜÑ]?[a-záéíóúüñ]+)*$/',$nacionalidad)) {
 			$error = 1;
 		}
 	} else{
 		$error = 1;
 	}
 
-//Si no hay errores
+//Si no hay errores se hace la insersion correspondiente
 	if ($error == 0) {
 		$query = ("INSERT INTO autores (nombre,apaterno,amaterno,nacionalidad) VALUES ('$nombre','$apaterno','$amaterno','$nacionalidad')");
 		$process = pg_query($conn, $query);
@@ -147,7 +147,7 @@ else if ($_SESSION['alta']==3){
 		$error = 1;
 	}
 
-//SI no hay errores
+//SI no hay errores hace la insercion correspondiente
 	if ($error == 0) {
 		$query = ("INSERT INTO libros (titulo,id_autor,anio_pub) VALUES ('$titulo','$id_autor','$anio_pub')");
 		$process = pg_query($conn, $query);
