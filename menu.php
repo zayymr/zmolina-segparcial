@@ -10,6 +10,7 @@
 </div>
 <div class="menu">
 <?php
+//se inicia la sesion para evitar infiltraciones
 session_start();
 if ($_SESSION['pag']==1) {
 	if ($_SESSION['bd']==1){

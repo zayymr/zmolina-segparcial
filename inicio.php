@@ -6,16 +6,15 @@
 </head>
 <body>
 <?php
-
 session_start();
 $_SESSION['pag']=0;
 
 if ($_SESSION['error']==1){
-	?><font color="yellow">Usuario y/o contraseña incorrectos</font><?php
+	?><p><mark>Usuario y/o contraseña incorrectos</mark></p><?php
 	$_SESSION['error']=0;
 }
 else if ($_SESSION['error']==2){
-	?><font color="yellow">Hubo un error al acceder a la base de datos</font><?php
+	?><p><mark>Hubo un error al acceder a la base de datos</mark></p><?php
 }
 
 ?>
